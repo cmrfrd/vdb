@@ -29,7 +29,6 @@ mypy = "^1.10.0"
 [tool.poetry.group.test.dependencies]
 pytest = "^7.3.1"
 
-
 [tool.poetry.group.modeling.dependencies]
 sentence-transformers = "^3.0.0"
 
