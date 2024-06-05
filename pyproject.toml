@@ -1,0 +1,84 @@
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core>=1.0.0"]
+
+[tool.poetry]
+package-mode = false
+version = "0.1.0"
+description = ""
+authors = [
+  "cmrfrd",
+]
+readme = "README.md"
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.12"
+numpy = "^1.24.1"
+ipython = "^8.24.0"
+pydantic = "^2.7.3"
+tqdm = "^4.66.4"
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.10.0"
+flake8 = "^5.0.4"
+isort = "^5.10.1"
+pylint = "^2.15.5"
+mypy = "^1.10.0"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.3.1"
+
+
+[tool.poetry.group.modeling.dependencies]
+sentence-transformers = "^3.0.0"
+
+[[tool.mypy.overrides]]
+module = [
+  'pydantic.*',
+  'pylint.*',
+  'tqdm.*',
+  'sentence_transformers.*',
+]
+ignore_missing_imports = true
+exclude = [
+  "test/**/*_test.py",
+  "test/**/test_*.py"
+]
+
+[tool.pytest.ini_options]
+addopts = "--cov=prompting_techniques --cov-report=term-missing --random-order"
+
+[tool.coverage.run]
+omit = [
+  "test/**/*.py",
+]
+
+[tool.black]
+line-length = 80
+target-version = ['py310']
+
+[tool.isort]
+profile = "black"
+line_length = 80
+py_version = '310'
+
+[tool.mypy]
+disallow_any_unimported = false
+disallow_any_expr = false
+disallow_any_decorated = false
+disallow_any_generics = false
+disallow_any_explicit = false
+disallow_subclassing_any = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_return_any = true
+warn_redundant_casts = true
+strict_equality = true
+warn_unused_configs = true
